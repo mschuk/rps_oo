@@ -22,8 +22,8 @@ class RockPaperScissorGame
     loop do
       get_player_choice
       get_computer_choice
-      puts @player.to_s
-      puts @computer.to_s
+      puts @player
+      puts @computer
       puts winner?(@player, @computer)
 
       puts "Play again? Type 'y' to play again"
