@@ -21,8 +21,8 @@ class RockPaperScissorGame
   CHOICES = {'p' => 'paper', 'r' => 'rock', 's' => 'scissor'}
 
   def initialize
-    @player = Player.new('Player')
-    @computer = Player.new('Computer')
+    self.player = Player.new('Player')
+    self.computer = Player.new('Computer')
   end
 
 
