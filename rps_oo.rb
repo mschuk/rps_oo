@@ -16,15 +16,23 @@ end
 
 class RockPaperScissorGame
 
+  attr_accessor :player, :computer
+
   CHOICES = {'p' => 'paper', 'r' => 'rock', 's' => 'scissor'}
+
+  def initialize
+    @player = Player.new('Player')
+    @computer = Player.new('Computer')
+  end
+
 
   def run
     loop do
       get_player_choice
       get_computer_choice
-      puts @player
-      puts @computer
-      puts winner?(@player, @computer)
+      puts player
+      puts computer
+      puts winner?(player, computer)
 
       puts "Play again? Type 'y' to play again"
       keep_playing = gets.chomp
@@ -39,12 +47,12 @@ class RockPaperScissorGame
       puts "Enter 'r', 'p', or 's'"
       player_choice = gets.chomp
     end until CHOICES.keys.include?(player_choice)
-    @player = Player.new('Player', CHOICES[player_choice])
+    player.choice = CHOICES[player_choice]
   end
 
   def get_computer_choice
     computer_choice = CHOICES.values.sample
-    @computer = Player.new('Computer', computer_choice)
+    computer.choice = computer_choice
   end
 
   def winner?(player, computer)
@@ -59,9 +67,9 @@ class RockPaperScissorGame
   end
 
   def player_wins?(player_choice, computer_choice)
-    return true if (player_choice == 'paper' && computer_choice == 'rock')  ||
-        (player_choice == 'rock' && computer_choice == 'scissor') ||
-        (player_choice == 'scissor' && computer_choice == 'paper')
+    (player_choice == 'paper' && computer_choice == 'rock')  ||
+    (player_choice == 'rock' && computer_choice == 'scissor') ||
+    (player_choice == 'scissor' && computer_choice == 'paper')
   end
 
 end
