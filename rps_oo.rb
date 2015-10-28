@@ -39,7 +39,6 @@ class RockPaperScissorGame
 
       break if keep_playing.downcase != 'y'
     end
-    exit
   end
 
   def get_player_choice
